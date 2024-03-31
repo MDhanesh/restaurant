@@ -1,0 +1,141 @@
+.Background {
+  background-color: #00000014;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 9999;
+}
+.Login_Container {
+  background-color: #fff;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  width: 350px;
+  position: relative;
+  border-radius: 0 8px 0 0;
+}
+.Login_Head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #000;
+}
+.Login_Head h1 {
+  font-size: 26px;
+  margin: 0;
+  padding-bottom: 10px;
+}
+.Inputs_Container {
+  display: grid;
+}
+.Inputs_Container h4 {
+  font-size: 16px;
+  margin: 10px 0 5px 0;
+}
+.Inputs_Container input {
+  height: 35px;
+  padding-left: 8px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: calc(100% - 16px);
+}
+.login__Btn {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.Close__Icon {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  border-radius: 50%;
+  padding: 8px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+.Signup_Page {
+  margin-top: 1rem;
+  border-top: 1px solid #888;
+  padding: 1rem 0;
+  text-align: center;
+}
+.Signup_Page a {
+  color: #000;
+}
+.Create_Account {
+  color: #0b5cff;
+}
+.OTPInput_Container {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+.OTP__input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 5px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #fafafa;
+  border-radius: 8px;
+  outline: none;
+}
+.OTP__input__Error {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 5px;
+  border: 1px solid red;
+  background-color: #fafafa;
+  border-radius: 8px;
+  outline: none;
+}
+.OTP__input:focus {
+  outline: none;
+  border: 1px #0b5cff solid;
+  caret-color: #0b5cff;
+}
+
+.Error__Message {
+  color: red;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+.OTP_Resend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+  padding: 1rem 0;
+}
+.Forgot_Pass {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Forgot_Pass a {
+  font-size: 0.93rem;
+  color: #0b5cff;
+  cursor: pointer;
+  text-decoration: underline;
+}

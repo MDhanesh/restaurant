@@ -1,0 +1,593 @@
+/*-------------------------------------------------------------------------*/
+.Settings_Drop_Con {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 0 10px;
+  margin-top: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #8a8a8a;
+  border: 1px solid #888;
+}
+.Settings_Country_Modal {
+  height: 0px;
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  outline: #f8f8f8 1.5px solid;
+  position: absolute;
+  border-radius: 6px;
+  z-index: 30;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s ease;
+  border: 1px solid #888;
+  background-color: #fff;
+  color: #8a8a8a;
+}
+.Width__Options {
+  width: 100%;
+}
+.Settings_Country_Modal_Open {
+  visibility: visible;
+  opacity: 1;
+  height: fit-content;
+}
+
+.Settings_Country_Modal p {
+  margin: 0px;
+  padding: 8px 0;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.Settings_Country_Modal_Con {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.Settings_Country_Modal_Con p:hover {
+  background-color: #f9f9f9;
+  margin-left: 0;
+  padding-left: 10px;
+  color: #0b5cff;
+}
+.Arrow_Down {
+  transform: rotate(0deg);
+  transition: 0.4s ease;
+}
+
+.Arrow_Up {
+  transform: rotate(180deg);
+}
+
+/*---------------------------------------------------------------*/
+
+.Hero_Start {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 500px;
+  padding-bottom: 1rem;
+}
+.Right_Grid {
+  padding: 2rem;
+  margin: auto;
+  position: relative;
+}
+.Right_Grid img {
+  max-width: 500px;
+}
+.Left_grid {
+  margin: auto;
+  padding: 1rem 2rem;
+}
+.Left_grid h1 {
+  font-size: 60px;
+}
+.Left_grid p {
+  font-size: 18px;
+  line-height: 30px;
+  font-style: italic;
+}
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  right: 50%;
+}
+.control-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #bbb;
+  cursor: pointer;
+}
+.control-dot.active {
+  background-color: #0b5cff;
+}
+/*========================================================*/
+.Container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+.Category {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  border-bottom: 2px solid #00000055;
+  padding-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+.Cats__Data {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 50px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+.Cats__DataActive {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 50px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+.Food_Card {
+  display: flex;
+  gap: 5rem 1rem;
+  flex-wrap: wrap;
+  padding: 2rem 1rem 1rem 1rem;
+  justify-content: space-between;
+}
+.Card__Box {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  width: 30%;
+}
+.Image__Box {
+  position: relative;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+}
+.Veg_Nonveg {
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  z-index: 100;
+}
+.Veg_Nonveg img {
+  width: 100%;
+  border-radius: 0 !important;
+}
+.Image__Box h3 {
+  position: absolute;
+  bottom: 10px;
+  left: 8px;
+  margin: 0;
+  color: #888;
+}
+.foodImage {
+  max-width: 100%;
+  border-radius: 12px 12px 0 0;
+  object-fit: cover;
+  height: 250px;
+}
+.Content__Box {
+  padding: 0.5rem 1rem;
+}
+.Content__Box h4 {
+  margin: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #000;
+}
+.Content__Box p {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 2px;
+  color: #888;
+}
+.Cost__Section {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #000;
+  padding: 0.4rem 0;
+}
+.Cost__Section h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+.Icons {
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.Count__Text {
+  margin: 0;
+  font-size: 14px !important;
+  font-weight: 500;
+  color: #000;
+}
+.Cost__Section button {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 8px 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.Cost__Section button:hover {
+  scale: 1.1;
+}
+/*=============================================*/
+.Order {
+  padding: 2rem 0;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.order__Container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+.Left_Box {
+  background-color: #fff;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  padding: 1rem;
+}
+.Left_Box h1 {
+  font-size: 24px;
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.Right_Box {
+  background-color: #fff;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  padding: 1rem;
+  height: fit-content;
+}
+.Right_Box h1 {
+  font-size: 24px;
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.Overflow {
+  overflow-y: auto;
+  height: 90vh;
+}
+.OrderList {
+  display: grid;
+  gap: 1.5rem;
+}
+.Item_Box {
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 1rem 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.ItemImg__Box {
+  width: 100px;
+  height: 120px;
+  padding-right: 1rem;
+}
+.ItemImg__Box img {
+  width: 120px;
+  height: 120px;
+}
+.ItemInfo__Box {
+  display: grid;
+}
+.PriceAndQuantity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0 0.5rem 0;
+}
+.PriceAndQuantity h3 {
+  font-size: 20px;
+  margin: 0;
+}
+.Info__Content h6 {
+  margin: 0;
+  font-size: 20px;
+}
+.Info__Content p {
+  margin: 0.4rem 0;
+  font-size: 15px;
+  color: #888;
+}
+.Remove__Btn {
+  background: none;
+  border: 1px solid green;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.PriceDetails {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+.PriceDetails span {
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.PriceDetails1 {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 5px 26px 5px;
+}
+.PriceDetails1 h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.Place__Order {
+  padding: 0.7rem 1.5rem;
+  background-color: #82bb37;
+  border: none;
+  width: 100%;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/*==========================================*/
+.Dash__Head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+}
+.Dash__Head h1 {
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.Dash__Height {
+  height: 100vh;
+}
+.Addcat_Start {
+  border: 1px solid #ddd;
+  margin: 1.5rem 0;
+}
+.AddCatHead {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000;
+}
+.D___grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.Grid__1 {
+  padding: 1rem;
+}
+.Grid__1 p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.Grid__1 input {
+  width: calc(100% - 18px);
+  height: 40px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #888;
+  padding-left: 10px;
+}
+.InputField {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.InputField button {
+  background-color: #0b5cff;
+  height: 40px;
+  border: 0;
+  padding: 8px 1rem;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.Grid__2 {
+  padding: 1rem;
+}
+.Grid__2 p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.Grid__2_Box {
+  border: 1px solid #ddd;
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.Grid__2_Box span {
+  background-color: #bbb;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.Close__Icon_Cat {
+  color: red;
+  border-radius: 50%;
+  border: 1px solid red;
+  cursor: pointer;
+}
+.Radio___btn {
+  display: flex;
+  gap: 1rem;
+}
+.Food__Btn_ {
+  margin-top: 0.6rem;
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.AddFoodHead {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000;
+}
+.AddFoodHead h1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+.AddFoodHead span {
+  background-color: #000;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.PersonCard__Box {
+  display: flex;
+  gap: 0.5rem;
+}
+.Image__PersonBox img {
+  width: 90px;
+  height: 90px;
+}
+.personContent__Box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.personContent__Box h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.personContent__Box p {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+.personContent__Box button {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 16px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 6px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+/*============================================*/
+.Listheading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration-line: underline;
+}
+.Box__head_list {
+  border: 1px solid #888;
+  margin: 1rem 0 0 0;
+  display: flex;
+  justify-content: space-around;
+}
+.Box__head_list p {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  width: 33%;
+  height: auto;
+}
+.Box__content_list {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #888;
+  height: auto;
+}
+.Content_Full_item {
+  width: 33%;
+  height: auto;
+}
+.Conatiner__Lict {
+  border-bottom: 1px solid #888;
+  min-height: 150px;
+}
+.IdLict {
+  display: flex;
+}
+.IdLict p {
+  margin: 3px 0;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.foodOrdered p {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 6px 0;
+}
+.Span__NAme {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
