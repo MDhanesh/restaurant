@@ -25,155 +25,164 @@ export default function Myorder({ setVal }) {
   return (
     <div className="Container">
       <div className="Listheading">My Orders</div>
-      <div>
-        <div className="Box__head_list">
-          <p>Food Item</p>
-          <span style={{ borderRight: "1px solid #888" }}></span>
-          <p>Location</p>
-          <span style={{ borderRight: "1px solid #888" }}></span>
-          <p>Order Info</p>
-          <span style={{ borderRight: "1px solid #888" }}></span>
-          <p>Delivery Info</p>
-        </div>
-        <div className="Box__content_list">
-          <div className="Content_Full_item">
-            {data?.getOneorder?.map((itm, i) => {
-              return (
-                <div key={i} className="Conatiner__Lict">
-                  <div>
-                    {Cartfound(itm?.cart)?.map((val, i) => {
-                      return (
-                        <div className="foodOrdered" key={i}>
-                          <p>
-                            Name:
-                            <span className="Span__NAme">
-                              {val?.foodItem?.name}
-                            </span>
-                            ({val?.foodItem?.veg})
-                          </p>
-                          <p>
-                            Qnty:<span>{val?.count}</span>
+      {data?.getOneorder?.length === 0 ? (
+        <div className="No_Order">You have not Ordered yet!</div>
+      ) : (
+        <div>
+          <div className="Box__head_list">
+            <p>Food Item</p>
+            <span style={{ borderRight: "1px solid #888" }}></span>
+            <p>Location</p>
+            <span style={{ borderRight: "1px solid #888" }}></span>
+            <p>Order Info</p>
+            <span style={{ borderRight: "1px solid #888" }}></span>
+            <p>Delivery Info</p>
+          </div>
+          <div className="Box__content_list">
+            <div className="Content_Full_item">
+              {data?.getOneorder?.map((itm, i) => {
+                return (
+                  <div key={i} className="Conatiner__Lict">
+                    <div>
+                      {Cartfound(itm?.cart)?.map((val, i) => {
+                        return (
+                          <div className="foodOrdered" key={i}>
+                            <p>
+                              Name:
+                              <span className="Span__NAme">
+                                {val?.foodItem?.name}
+                              </span>
+                              ({val?.foodItem?.veg})
+                            </p>
+                            <p>
+                              Qnty:<span>{val?.count}</span>
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <span style={{ borderRight: "1px solid #888" }}></span>
+            <div className="Content_Full_item">
+              {data?.getOneorder?.map((itm, i) => {
+                return (
+                  <div key={i} className="Conatiner__Lict">
+                    <div className="IdLict">
+                      <p>Name :</p>
+                      <p>{itm?.user?.name}</p>
+                    </div>
+                    <div className="IdLict">
+                      <p>Email :</p>
+                      <p>{itm?.user?.email}</p>
+                    </div>
+                    <div className="IdLict">
+                      <p>Phone :</p>
+                      <p>{itm?.user?.number}</p>
+                    </div>
+                    <div className="IdLict">
+                      <p>Place :</p>
+                      <p>{itm?.user?.Place}</p>
+                    </div>
+                    <div className="IdLict">
+                      <p>Address:</p>
+                      <p>{itm?.user?.Location}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <span style={{ borderRight: "1px solid #888" }}></span>
+            <div className="Content_Full_item">
+              {data?.getOneorder?.map((itm, i) => {
+                return (
+                  <div key={i} className="Conatiner__Lict">
+                    <div className="IdLict">
+                      <p>Order Id :</p>&nbsp;
+                      <p>#{itm?._id.slice(0, 6)}</p>
+                    </div>
+                    <div className="IdLict">
+                      <p>Price:</p>&nbsp;
+                      <p>
+                        <BsCurrencyRupee size={18} />
+                        {itm?.price}
+                      </p>
+                    </div>
+                    <div className="IdLict">
+                      <p>Ordered Date: </p>&nbsp;
+                      <p>{itm?.createdAt.slice(0, 15)}</p>
+                    </div>
+                    <div className="IdLict">
+                      <p>Ordered Time: </p>&nbsp;
+                      <p>{itm?.createdAt.slice(16, 24)}</p>
+                    </div>
+                    <div className="IdLict">
+                      <p>Ordered Status: </p>&nbsp;
+                      <p>{itm?.status}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <span style={{ borderRight: "1px solid #888" }}></span>
+            <div className="Content_Full_item">
+              {data?.getOneorder?.map((itm, i) => {
+                return (
+                  <div key={i} className="Conatiner__Lict">
+                    {!itm?.delivery ? (
+                      <div
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: "600",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          height: "150px",
+                        }}
+                      >
+                        Food is Cooking
+                      </div>
+                    ) : (
+                      <div style={{ display: "flex", padding: "4px" }}>
+                        <img
+                          style={{
+                            width: "100px",
+                            height: "100px",
+                            borderRadius: "10px",
+                          }}
+                          src={itm?.delivery?.image}
+                          alt="image"
+                        />
+                        <div>
+                          <div className="IdLict">
+                            <p>Name: </p>&nbsp;
+                            <p>{itm?.delivery?.name}</p>
+                          </div>
+                          <div className="IdLict">
+                            <p>Number: </p>&nbsp;
+                            <p>{itm?.delivery?.phone}</p>
+                          </div>
+                          <p
+                            style={{
+                              margin: "0 2px",
+                              fontSize: "16px",
+                              fontWeight: "500",
+                            }}
+                          >
+                            Reach your destination with in 30 minutes
                           </p>
                         </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <span style={{ borderRight: "1px solid #888" }}></span>
-          <div className="Content_Full_item">
-            {data?.getOneorder?.map((itm, i) => {
-              return (
-                <div key={i} className="Conatiner__Lict">
-                  <div className="IdLict">
-                    <p>Name :</p>
-                    <p>{itm?.user?.name}</p>
-                  </div>
-                  <div className="IdLict">
-                    <p>Email :</p>
-                    <p>{itm?.user?.email}</p>
-                  </div>
-                  <div className="IdLict">
-                    <p>Phone :</p>
-                    <p>{itm?.user?.number}</p>
-                  </div>
-                  <div className="IdLict">
-                    <p>Place :</p>
-                    <p>{itm?.user?.Place}</p>
-                  </div>
-                  <div className="IdLict">
-                    <p>Address:</p>
-                    <p>{itm?.user?.Location}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <span style={{ borderRight: "1px solid #888" }}></span>
-          <div className="Content_Full_item">
-            {data?.getOneorder?.map((itm, i) => {
-              return (
-                <div key={i} className="Conatiner__Lict">
-                  <div className="IdLict">
-                    <p>Order Id :</p>&nbsp;
-                    <p>#{itm?._id.slice(0, 6)}</p>
-                  </div>
-                  <div className="IdLict">
-                    <p>Price:</p>&nbsp;
-                    <p>
-                      <BsCurrencyRupee size={18} />
-                      {itm?.price}
-                    </p>
-                  </div>
-                  <div className="IdLict">
-                    <p>Ordered Date: </p>&nbsp;
-                    <p>{itm?.createdAt.slice(0, 15)}</p>
-                  </div>
-                  <div className="IdLict">
-                    <p>Ordered Time: </p>&nbsp;
-                    <p>{itm?.createdAt.slice(16, 24)}</p>
-                  </div>
-                  <div className="IdLict">
-                    <p>Ordered Status: </p>&nbsp;
-                    <p>{itm?.status}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <span style={{ borderRight: "1px solid #888" }}></span>
-          <div className="Content_Full_item">
-            {data?.getOneorder?.map((itm, i) => {
-              return (
-                <div key={i} className="Conatiner__Lict">
-                  {!itm?.delivery ? (
-                    <div
-                      style={{
-                        fontSize: "18px",
-                        fontWeight: "600",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        height: "150px",
-                      }}
-                    >
-                      Food is Cooking
-                    </div>
-                  ) : (
-                    <>
-                      <div className="IdLict">
-                        <p>Order Id :</p>&nbsp;
-                        <p>#{itm?._id.slice(0, 6)}</p>
                       </div>
-                      <div className="IdLict">
-                        <p>Name:</p>&nbsp;
-                        <p>
-                          <BsCurrencyRupee size={18} />
-                          {itm?.delivery?.name}
-                        </p>
-                      </div>
-                      <div className="IdLict">
-                        <p>Ordered Date: </p>&nbsp;
-                        <p>{itm?.createdAt.slice(0, 15)}</p>
-                      </div>
-                      <div className="IdLict">
-                        <p>Ordered Time: </p>&nbsp;
-                        <p>{itm?.createdAt.slice(16, 24)}</p>
-                      </div>
-                      <div className="IdLict">
-                        <p>Ordered Status: </p>&nbsp;
-                        <p>{itm?.status}</p>
-                      </div>
-                    </>
-                  )}
-                </div>
-              );
-            })}
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -31,27 +31,31 @@ export default function Foodmenu({ setVal }) {
           ))}
         </div>
         {/* fooods */}
-        <div className="Food_Card">
-          {filterData?.map((data, i) => (
-            <Card data={data} key={i} setVal={setVal} />
-          ))}
-        </div>
+        {filterData?.length === 0 ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "200px",
+              fontSize: "25px",
+              fontWeight: "600",
+            }}
+          >
+            No Food to Show
+          </div>
+        ) : (
+          <div className="Food_Card">
+            {filterData?.map((data, i) => (
+              <Card data={data} key={i} setVal={setVal} />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
 }
 const Card = ({ data, i, setVal }) => {
-  // const [count, setCount] = useState(1);
-  // const Addcount = () => {
-  //   if (count < 10) {
-  //     setCount(count + 1);
-  //   }
-  // };
-  // const Removecount = () => {
-  //   if (count > 1) {
-  //     setCount(count - 1);
-  //   }
-  // };
   // State to store checkout items
   const [checkoutItems, setCheckoutItems] = useState([]);
 

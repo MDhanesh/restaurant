@@ -65,7 +65,7 @@ function App() {
                 <Order setVal={setVal} setOpen={setOpen} Alldata={data} />
               }
             />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard setVal={setVal} />} />
             <Route
               path="/verify/:email"
               element={<OTP open={open} setOpen={setOpen} />}

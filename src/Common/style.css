@@ -90,11 +90,12 @@
 }
 .Content_BoxLogout {
   position: absolute;
-  top: 25px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
   width: 150px;
+  height: 150px;
   padding: 6px 12px;
 }
 .LogoutHover {

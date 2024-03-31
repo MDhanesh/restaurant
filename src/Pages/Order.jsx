@@ -108,6 +108,7 @@ export default function Order({ setVal, setOpen, Alldata }) {
           },
         });
         console.log(val);
+        navigate("/order-list");
       } catch (error) {
         console.log(error);
       }
@@ -232,11 +233,11 @@ export default function Order({ setVal, setOpen, Alldata }) {
             </button>
             <br />
             <br />
-            <h1>My Address</h1>
-            {!localStorage.getItem("UserToken") &&
-            !Alldata?.getlogin?.Location &&
-            !Alldata?.getlogin?.Place ? null : (
+            {!localStorage.getItem("UserToken") ||
+            (!Alldata?.getlogin?.Location &&
+              !Alldata?.getlogin?.Place) ? null : (
               <div>
+                <h1>My Address</h1>
                 <div>Name:{Alldata?.getlogin?.name}</div>
                 <div>Phone:{Alldata?.getlogin?.number}</div>
                 <div>Place:{Alldata?.getlogin?.Place}</div>
@@ -272,6 +273,7 @@ const Address = ({ setOpenAdd, openAdd, Alldata }) => {
           },
         });
         setOpenAdd(false);
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);

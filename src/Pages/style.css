@@ -554,7 +554,7 @@
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
-  width: 33%;
+  width: 25%;
   height: auto;
 }
 .Box__content_list {
@@ -564,30 +564,48 @@
   height: auto;
 }
 .Content_Full_item {
-  width: 33%;
+  width: 25%;
   height: auto;
+  min-height: 100%;
 }
 .Conatiner__Lict {
-  border-bottom: 1px solid #888;
+  border-top: 1px solid #888;
   min-height: 150px;
+  height: auto;
 }
 .IdLict {
   display: flex;
 }
 .IdLict p {
-  margin: 3px 0;
+  margin: 4px;
   font-size: 16px;
   font-weight: 600;
   display: flex;
-  align-items: center;
 }
 .foodOrdered p {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
-  margin: 6px 0;
+  margin: 1px;
 }
 .Span__NAme {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
+}
+.No_Order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  height: 50vh;
+}
+/*================================================*/
+select {
+  width: calc(100% - 30px);
+  padding: 8px;
+  margin: 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  outline: none;
 }

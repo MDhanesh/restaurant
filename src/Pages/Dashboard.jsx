@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import "./style.css";
 import { useMutation, useQuery } from "@apollo/client";
-import { GET_ALL_CATS, GET_ALL_FOODS, GET_ALL_PERSON } from "../graphql/query";
+import {
+  GET_ALL_CATS,
+  GET_ALL_FOODS,
+  GET_ALL_ORDER,
+  GET_ALL_PERSON,
+} from "../graphql/query";
 import {
   ADD_CATS,
   ADD_DELIVERY_PERSON,
@@ -10,14 +15,29 @@ import {
   DELETE__DELIVERY_PERSON,
   UPDATE_CATEGORY,
   UPDATE_FOOD,
+  UPDATE__ORDER,
 } from "../graphql/mutation";
-import { MdClose, MdKeyboardArrowDown } from "react-icons/md";
-import img from "../Assets/pizza.jpg";
+import {
+  MdClose,
+  MdKeyboardArrowDown,
+  MdOutlineArrowDropDown,
+} from "react-icons/md";
 import veg from "../Assets/veg.svg";
 import nonveg from "../Assets/non_veg.svg";
+import { BsCurrencyRupee } from "react-icons/bs";
 
-export default function Dashboard() {
-  const [view, setView] = useState("Kitchen");
+export default function Dashboard({ setVal }) {
+  const [view, setView] = useState("/kitchen");
+  //
+  function Totalitem() {
+    const Olditm = localStorage.getItem("checkoutItems");
+    const parse = JSON.parse(Olditm);
+    return parse?.length > 0 ? parse.length : 0;
+  }
+  useEffect(() => {
+    setVal(Totalitem());
+  }, [localStorage.getItem("checkoutItems")]);
+
   return (
     <div className="Container">
       {/* Dashboard_Heading */}
@@ -31,7 +51,7 @@ export default function Dashboard() {
         {/* AddCategoryForm */}
         {view === "/AddCategory" && <AddCategory />}
         {/* KitchenView */}
-        {/* {view === "/kitchen" && <KitchenView />} */}
+        {view === "/kitchen" && <KitchenView />}
         {/* OrderListView */}
         {view === "/DeliveryPerson" && <Deliveryperson />}
         {/* AddFoodForm */}
@@ -524,7 +544,6 @@ const Deliveryperson = () => {
   const [err, setErr] = useState();
   //
   const { data } = useQuery(GET_ALL_PERSON);
-  console.log(data);
   const [addDeliveryperson] = useMutation(ADD_DELIVERY_PERSON, {
     refetchQueries: [{ query: GET_ALL_PERSON }],
   });
@@ -645,6 +664,226 @@ const Deliveryperson = () => {
           </div>
         </div>
       )}
+    </>
+  );
+};
+//Kitchen
+const KitchenView = () => {
+  const { data } = useQuery(GET_ALL_ORDER);
+  const delivery = useQuery(GET_ALL_PERSON);
+  const Cartfound = (itm) => {
+    return JSON.parse(itm);
+  };
+  //
+  const [accountType, setAccountType] = useState("");
+  const [delperson, setdelperson] = useState("");
+
+  //
+  const handleTeacherSelect = (i, teacherId) => {
+    setdelperson({ i: teacherId });
+    setAccountType(teacherId);
+  };
+  console.log(delperson, accountType);
+  //
+  const [updateOrder] = useMutation(UPDATE__ORDER, {
+    refetchQueries: [{ query: GET_ALL_ORDER }],
+  });
+  //
+  const updateDelivery = async (id) => {
+    try {
+      const val = await updateOrder({
+        variables: {
+          orderplaced: { delivery: accountType, status: "Ready To Delivery" },
+          id: id,
+        },
+      });
+      console.log(val);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <>
+      <div className="KitchenView">
+        <div className="Listheading">Total Orders</div>
+        {data?.getAllorder?.length === 0 ? (
+          <div className="No_Order">No one Ordered yet!</div>
+        ) : (
+          <div>
+            <div className="Box__head_list">
+              <p>Food Item</p>
+              <span style={{ borderRight: "1px solid #888" }}></span>
+              <p>Location</p>
+              <span style={{ borderRight: "1px solid #888" }}></span>
+              <p>Order Info</p>
+              <span style={{ borderRight: "1px solid #888" }}></span>
+              <p>Delivery Info</p>
+            </div>
+            <div className="Box__content_list">
+              <div className="Content_Full_item">
+                {data?.getAllorder?.map((itm, i) => {
+                  return (
+                    <div key={i} className="Conatiner__Lict">
+                      <div>
+                        {Cartfound(itm?.cart)?.map((val, i) => {
+                          return (
+                            <div className="foodOrdered" key={i}>
+                              <p>
+                                Name:
+                                <span className="Span__NAme">
+                                  {val?.foodItem?.name}
+                                </span>
+                                ({val?.foodItem?.veg})
+                              </p>
+                              <p>
+                                Qnty:<span>{val?.count}</span>
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <span style={{ borderRight: "1px solid #888" }}></span>
+              <div className="Content_Full_item">
+                {data?.getAllorder?.map((itm, i) => {
+                  return (
+                    <div key={i} className="Conatiner__Lict">
+                      <div className="IdLict">
+                        <p>Name :</p>
+                        <p>{itm?.user?.name}</p>
+                      </div>
+                      <div className="IdLict">
+                        <p>Email :</p>
+                        <p>{itm?.user?.email}</p>
+                      </div>
+                      <div className="IdLict">
+                        <p>Phone :</p>
+                        <p>{itm?.user?.number}</p>
+                      </div>
+                      <div className="IdLict">
+                        <p>Place :</p>
+                        <p>{itm?.user?.Place}</p>
+                      </div>
+                      <div className="IdLict">
+                        <p>Address:</p>
+                        <p>{itm?.user?.Location}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <span style={{ borderRight: "1px solid #888" }}></span>
+              <div className="Content_Full_item">
+                {data?.getAllorder?.map((itm, i) => {
+                  return (
+                    <div key={i} className="Conatiner__Lict">
+                      <div className="IdLict">
+                        <p>Order Id :</p>&nbsp;
+                        <p>#{itm?._id.slice(0, 6)}</p>
+                      </div>
+                      <div className="IdLict">
+                        <p>Price:</p>&nbsp;
+                        <p>
+                          <BsCurrencyRupee size={18} />
+                          {itm?.price}
+                        </p>
+                      </div>
+                      <div className="IdLict">
+                        <p>Ordered Date: </p>&nbsp;
+                        <p>{itm?.createdAt.slice(0, 15)}</p>
+                      </div>
+                      <div className="IdLict">
+                        <p>Ordered Time: </p>&nbsp;
+                        <p>{itm?.createdAt.slice(16, 24)}</p>
+                      </div>
+                      <div className="IdLict">
+                        <p>Ordered Status: </p>&nbsp;
+                        <p>{itm?.status}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <span style={{ borderRight: "1px solid #888" }}></span>
+              <div className="Content_Full_item">
+                {data?.getAllorder?.map((itm, i) => {
+                  return (
+                    <div key={i} className="Conatiner__Lict">
+                      {itm?.delivery === null ? (
+                        <>
+                          {" "}
+                          <select
+                            value={delperson[i]}
+                            onChange={(e) =>
+                              handleTeacherSelect(i, e.target.value)
+                            }
+                          >
+                            <option value="">Select Teacher</option>
+                            {delivery?.data?.getAllPerson?.map(
+                              (teacher, index) => (
+                                <option key={index} value={teacher?._id}>
+                                  {teacher.name}
+                                </option>
+                              )
+                            )}
+                          </select>
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              marginTop: "6px",
+                            }}
+                          >
+                            <button
+                              style={{
+                                backgroundColor: "#000",
+                                color: "#fff",
+                                padding: "6px 14px",
+                                textTransform: "uppercase",
+                                borderRadius: "6px",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => updateDelivery(itm?._id)}
+                            >
+                              Update
+                            </button>
+                          </div>
+                        </>
+                      ) : (
+                        <div style={{ display: "flex", padding: "4px" }}>
+                          <img
+                            style={{
+                              width: "100px",
+                              height: "100px",
+                              borderRadius: "10px",
+                            }}
+                            src={itm?.delivery?.image}
+                            alt="image"
+                          />
+                          <div>
+                            <div className="IdLict">
+                              <p>Name: </p>&nbsp;
+                              <p>{itm?.delivery?.name}</p>
+                            </div>
+                            <div className="IdLict">
+                              <p>Number: </p>&nbsp;
+                              <p>{itm?.delivery?.phone}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };

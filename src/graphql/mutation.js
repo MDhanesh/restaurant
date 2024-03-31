@@ -80,3 +80,8 @@ export const CREATE_ORDER = gql`
     createOrder(Orderplaced: $orderplaced)
   }
 `;
+export const UPDATE__ORDER = gql`
+  mutation UpdateOrder($id: String, $orderplaced: OrderplacedInput) {
+    updateOrder(_id: $id, Orderplaced: $orderplaced)
+  }
+`;
