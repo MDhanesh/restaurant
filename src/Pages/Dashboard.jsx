@@ -814,14 +814,13 @@ const KitchenView = () => {
                     <div key={i} className="Conatiner__Lict">
                       {itm?.delivery === null ? (
                         <>
-                          {" "}
                           <select
                             value={delperson[i]}
                             onChange={(e) =>
                               handleTeacherSelect(i, e.target.value)
                             }
                           >
-                            <option value="">Select Teacher</option>
+                            <option value="">Select Delivery Person</option>
                             {delivery?.data?.getAllPerson?.map(
                               (teacher, index) => (
                                 <option key={index} value={teacher?._id}>

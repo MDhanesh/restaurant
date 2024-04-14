@@ -8,7 +8,7 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_CATS, GET_ALL_FOODS } from "../graphql/query";
 
 export default function Foodmenu({ setVal }) {
-  const [fillCat, setFillCat] = useState("pizza");
+  const [fillCat, setFillCat] = useState("Combo offer");
   const { data } = useQuery(GET_ALL_FOODS);
   const Foodcat = useQuery(GET_ALL_CATS);
   const filterData = data?.getAllFoods?.filter(

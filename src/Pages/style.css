@@ -381,7 +381,8 @@
   cursor: pointer;
 }
 .Dash__Height {
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 }
 .Addcat_Start {
   border: 1px solid #ddd;

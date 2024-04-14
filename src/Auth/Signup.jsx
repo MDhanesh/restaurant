@@ -41,14 +41,14 @@ export default function Signup({ opens, setOpens, setOpen }) {
     e.preventDefault();
     if (name === "") {
       setErrormsg("Please enter your name");
+    } else if (!numberregex.test(number)) {
+      setErrormsg("Enter valid Phone Number");
     } else if (email === "" || !regex.test(email)) {
       setErrormsg("Invalid email address");
     } else if (password.length < 8) {
       setErrormsg("Password  at least 8 characters long");
     } else if (!passwordregex.test(password)) {
       setErrormsg("Must contain Numbers,Special characters,Upper & Lower case");
-    } else if (!numberregex.test(number)) {
-      setErrormsg("Enter valid Phone Number");
     } else {
       try {
         const value = await OnSignup({
@@ -81,7 +81,6 @@ export default function Signup({ opens, setOpens, setOpen }) {
             <h1>Signup</h1>
           </div>
           <div className="Inputs_Container">
-            {errormsg && <span className="Error__Message">{errormsg}</span>}
             <form onSubmit={handleSubmit}>
               <h4>Full Name: *</h4>
               <input
@@ -90,6 +89,9 @@ export default function Signup({ opens, setOpens, setOpen }) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
+              {errormsg === "Please enter your name" && (
+                <span className="Error__Message">{errormsg}</span>
+              )}
               <h4>Phone Number: *</h4>
               <input
                 type="text"
@@ -97,6 +99,9 @@ export default function Signup({ opens, setOpens, setOpen }) {
                 value={number}
                 onChange={handleInputChange}
               />
+              {errormsg === "Enter valid Phone Number" && (
+                <span className="Error__Message">{errormsg}</span>
+              )}
               <h4>Email: *</h4>
               <input
                 type="text"
@@ -104,6 +109,9 @@ export default function Signup({ opens, setOpens, setOpen }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              {errormsg === "Invalid email address" && (
+                <span className="Error__Message">{errormsg}</span>
+              )}
               <h4>Password: *</h4>
               <input
                 type="password"
@@ -111,6 +119,13 @@ export default function Signup({ opens, setOpens, setOpen }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {errormsg === "Password  at least 8 characters long" && (
+                <span className="Error__Message">{errormsg}</span>
+              )}
+              {errormsg ===
+                "Must contain Numbers,Special characters,Upper & Lower case" && (
+                <span className="Error__Message">{errormsg}</span>
+              )}
               <button type="submit" className="login__Btn">
                 Login
               </button>
